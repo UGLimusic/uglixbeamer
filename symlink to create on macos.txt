@@ -1,0 +1,1 @@
+% sudo ln -s "$(which pygmentize)" /Library/TeX/texbin/pygmentize

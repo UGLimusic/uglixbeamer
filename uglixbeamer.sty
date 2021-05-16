@@ -1,0 +1,118 @@
+% uglixbeamer v0.2
+%
+% 2020-10
+%
+%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{uglixbeamer}
+\RequirePackage[french]{babel}
+\RequirePackage{minted}   
+\RequirePackage{hyperref}
+\RequirePackage[normalem]{ulem}
+
+\hypersetup{pdfborder = 0 0 0}
+\urlstyle{same}
+\newcommand{\link}[2]{\href{#1}{\color{blue}#2}}
+
+\RequirePackage{numprint}
+\newcommand{\np}{\numprint}
+
+
+%------- base maths
+\usepackage[d]{esvect}
+\input{uglibeamer-base.tex}
+
+%------- tikz
+
+\RequirePackage{ifthen}
+\RequirePackage{xargs}
+\RequirePackage{tikz}
+\RequirePackage{tkz-tab}
+\usetikzlibrary{shadows,decorations.pathmorphing,calc,backgrounds}
+\input{uglibeamer-tikz.tex}
+
+%------- colors
+
+\RequirePackage{xcolor}
+\RequirePackage{colortbl}
+
+\input{uglibeamer-colors.tex}
+
+\definecolor{mSybilaRed}{HTML}{990000}
+\definecolor{codebackground}{HTML}{e4e6e6}
+\definecolor{beamerWhite}{HTML}{FAFAFA}
+\definecolor{beamerBlack}{HTML}{22373A}
+\definecolor{beamerRed}{HTML}{990000}
+\definecolor{beamerBlue}{HTML}{18A999}
+\definecolor{beamerGreen}{HTML}{60A561}
+
+%------- code related
+
+
+\setminted{bgcolor=codebackground}
+\setmintedinline{bgcolor=beamerWhite}
+% GOTTA FIX THIS
+%\newenvironment{pythoncode}{\VerbatimEnvironment\begin{minted}[breaklines,breakanywhere]{python}}{\end{minted}}
+%\newenvironment{pythoncodenumbered}{\VerbatimEnvironment\begin{minted}[linenos,breaklines,breakanywhere]{python}}{\end{minted}
+\newcommand{\pythoninline}[1]{\mintinline{python}{#1}}
+
+
+
+
+%------- specific beamer formatting
+
+\usetheme[progressbar=frametitle]{metropolis}
+\setbeamertemplate{footline}
+{
+    \leavevmode
+    \hbox{
+        \begin{beamercolorbox}[wd=.15\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}
+            \usebeamerfont{author in head/foot}\insertshortauthor
+        \end{beamercolorbox}
+        
+        \begin{beamercolorbox}[wd=.7\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}
+            \usebeamerfont{author in head/foot}\insertshorttitle
+        \end{beamercolorbox}
+        
+        \begin{beamercolorbox}[wd=.15\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}
+            \insertframenumber{} / \inserttotalframenumber
+        \end{beamercolorbox}
+    }
+}
+
+\setbeamercolor{title separator}{fg=mSybilaRed}
+\setbeamercolor{progress bar}{fg=mSybilaRed,bg=mSybilaRed!90!black!30}
+
+\makeatletter
+\setlength{\metropolis@progressinheadfoot@linewidth}{2pt}
+\makeatother
+\setbeamercolor{progress bar in section page}{use=progress bar,parent=progress bar}
+\setbeamercolor{alerted text}{fg=mSybilaRed}
+\setbeamercolor{example text}{fg=beamerGreen}
+
+\setbeamercolor{default text}{fg=beamerBlack}
+\setbeamertemplate{footline}
+{
+    \leavevmode
+    \hbox{
+        \begin{beamercolorbox}[wd=.15\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}
+            \usebeamerfont{author in head/foot}\insertshortauthor
+        \end{beamercolorbox}
+        
+        \begin{beamercolorbox}[wd=.7\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}
+            \usebeamerfont{author in head/foot}\insertshorttitle
+        \end{beamercolorbox}
+        
+        \begin{beamercolorbox}[wd=.15\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}
+            \insertframenumber{} / \inserttotalframenumber
+        \end{beamercolorbox}
+    }
+}
+
+
+\metroset{block=fill}
+
+
+
+
+
